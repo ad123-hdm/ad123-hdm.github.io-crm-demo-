@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NordStern GmbH &middot; Anmeldung</title>
+<style>
+  :root{
+    --bg:#F5F7FA; --surface:#FFFFFF; --navy:#1F3864; --blue:#2E75B6;
+    --ink:#1A2233; --muted:#6B7785; --line:#E3E8EF; --green:#137A4F; --green-bg:#E6F4EC;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh}
+  header{background:var(--navy);color:#fff;padding:18px 0}
+  .head-inner{max-width:540px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:12px}
+  .logo{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#fff 0 50%,#9FC0E8 50% 100%);
+    display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy);font-size:18px;flex-shrink:0}
+  .brand{font-size:19px;font-weight:700;letter-spacing:.3px}
+  .brand small{display:block;font-size:10px;font-weight:500;color:#AFC6E6;letter-spacing:1.5px;text-transform:uppercase;margin-top:1px}
+  .wrap{max-width:540px;margin:22px auto;padding:0 18px 60px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card h2{font-size:17px;margin-bottom:4px}
+  .card .sub{color:var(--muted);font-size:13px;margin-bottom:18px}
+  form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1 / -1}
+  .field.knr{grid-column:1 / -1;background:#F0F4FA;border:1px dashed #B9CBE4;border-radius:10px;
+    padding:10px 14px;flex-direction:row;align-items:center;gap:10px}
+  .field.knr label{margin:0;color:var(--navy)}
+  .field.knr .val{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;color:var(--navy)}
+  .field.knr .hint{color:var(--muted);font-size:12px;margin-left:auto}
+  label{font-size:13px;font-weight:600;color:#3A4658}
+  input[type=text],input[type=email],input[type=tel]{border:1px solid var(--line);border-radius:9px;
+    padding:12px;font:inherit;background:#fff;color:var(--ink);width:100%}
+  input:focus{outline:2px solid var(--blue);outline-offset:-1px;border-color:var(--blue)}
+  .toggle{display:flex;gap:8px}
+  .toggle label{flex:1;border:1px solid var(--line);border-radius:9px;padding:11px;text-align:center;cursor:pointer;font-weight:500}
+  .toggle input{display:none}
+  .toggle label:has(input:checked){border-color:var(--blue);background:#EEF4FB;color:var(--blue);font-weight:700}
+  .actions{grid-column:1 / -1;margin-top:4px}
+  button.primary{width:100%;background:var(--blue);color:#fff;border:none;border-radius:9px;
+    padding:14px;font:inherit;font-weight:700;cursor:pointer}
+  button.primary:hover{background:#255f95}
+  .note{grid-column:1 / -1;color:var(--muted);font-size:12px;text-align:center;margin-top:2px}
+
+  /* confirmation */
+  #done{display:none;text-align:center;padding:14px 8px}
+  #done .check{width:62px;height:62px;border-radius:50%;background:var(--green-bg);color:var(--green);
+    display:flex;align-items:center;justify-content:center;font-size:32px;margin:6px auto 16px}
+  #done h2{font-size:20px;margin-bottom:8px}
+  #done p{color:var(--muted);font-size:14px;margin-bottom:6px}
+  #done .knr{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:800;color:var(--navy);font-size:22px;margin:10px 0}
+  #done .priv{background:#F0F4FA;border-radius:10px;padding:12px 14px;font-size:13px;color:#3A4658;margin:18px 0}
+  button.ghost{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:9px;
+    padding:11px 18px;font:inherit;font-weight:600;cursor:pointer}
+  button.ghost:hover{border-color:var(--blue);color:var(--blue)}
+
+  @media (max-width:560px){form{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="head-inner">
+      <div class="logo">N</div>
+      <div class="brand">NordStern GmbH<small>Customer Relationship Management</small></div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="card">
+      <!-- FORM -->
+      <div id="formview">
+        <h2>Kundenstammblatt &middot; Neukundenanlage</h2>
+        <p class="sub">Bitte mit erfundenen Daten ausf&uuml;llen &ndash; du legst gerade einen Kundendatensatz an.</p>
+        <form id="crm-form" autocomplete="off">
+          <div class="field knr">
+            <label>Kunden-Nr.</label>
+            <span class="val">wird automatisch vergeben</span>
+            <span class="hint">vom System</span>
+          </div>
+          <div class="field"><label>Vorname</label><input type="text" name="vorname" required></div>
+          <div class="field"><label>Nachname</label><input type="text" name="nachname" required></div>
+          <div class="field full"><label>Telefon</label><input type="tel" name="telefon"></div>
+          <div class="field full"><label>E-Mail</label><input type="email" name="email"></div>
+          <div class="field full"><label>Stra&szlig;e und Hausnummer</label><input type="text" name="strasse"></div>
+          <div class="field"><label>PLZ</label><input type="text" name="plz"></div>
+          <div class="field"><label>Ort</label><input type="text" name="ort"></div>
+          <div class="field full">
+            <label>Newsletter erw&uuml;nscht?</label>
+            <div class="toggle">
+              <label><input type="radio" name="newsletter" value="Ja">&#9993; Ja</label>
+              <label><input type="radio" name="newsletter" value="Nein" checked>Nein</label>
+            </div>
+          </div>
+          <div class="actions"><button type="submit" class="primary">Kundendatensatz anlegen</button></div>
+          <p class="note">Demo &ndash; deine Eingaben werden nirgends gespeichert.</p>
+        </form>
+      </div>
+
+      <!-- CONFIRMATION -->
+      <div id="done">
+        <div class="check">&#10003;</div>
+        <h2 id="welcome">Willkommen!</h2>
+        <p>Du wurdest erfolgreich als Kunde angelegt.</p>
+        <div class="knr" id="knr">K-1042</div>
+        <div class="priv">&#128274; Keine Sorge: Diese Daten werden <strong>nirgendwo gespeichert</strong> und f&uuml;hren ins Nichts. Es geht nur ums Gef&uuml;hl, gerade einen Datensatz erzeugt zu haben.</div>
+        <button class="ghost" onclick="reset()">Noch einen Kunden anlegen</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const form = document.getElementById('crm-form');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const vorname = form.vorname.value.trim() || 'Kunde';
+    const knr = 'K-' + (1000 + Math.floor(Math.random()*9000));
+    document.getElementById('welcome').textContent = 'Willkommen, ' + vorname + '!';
+    document.getElementById('knr').textContent = knr;
+    document.getElementById('formview').style.display = 'none';
+    document.getElementById('done').style.display = 'block';
+    window.scrollTo({top:0, behavior:'smooth'});
+    // Daten werden bewusst nicht verarbeitet – sie verschwinden hier.
+  });
+  function reset(){
+    form.reset();
+    form.querySelector('input[name=newsletter][value=Nein]').checked = true;
+    document.getElementById('done').style.display = 'none';
+    document.getElementById('formview').style.display = 'block';
+    form.vorname.focus();
+  }
+</script>
+</body>
+</html>
